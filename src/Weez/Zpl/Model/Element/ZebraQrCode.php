@@ -11,10 +11,23 @@ use Weez\Zpl\Utils\ZplUtils;
  * Zpl command : ^B3 and ^BY
  *
  */
-class ZebraQrCode extends ZebraElement {
+class ZebraQrCode extends ZebraElement
+{
 
+    /**
+     * @var string
+     */
     private $text;
+
+    /**
+     * @var int
+     */
     private $mfactor;
+
+    /**
+     * @var int
+     */
+    private $model;
 
     /**
      *
@@ -23,13 +36,15 @@ class ZebraQrCode extends ZebraElement {
      * @param string $text
      * @param int $dimension
      */
-    public function __construct($positionX, $positionY, $text, $dimension = 10) {
+    public function __construct($positionX, $positionY, $text, $dimension = 10)
+    {
         $this->positionX = $positionX;
         $this->positionY = $positionY;
-        $this->mfactor   = $dimension;
-        $this->model     = 2;
-        $this->text      = $text;
+        $this->mfactor = $dimension;
+        $this->model = 2;
+        $this->text = $text;
     }
+
     /**
      *
      *  {@inheritdoc}
@@ -40,9 +55,9 @@ class ZebraQrCode extends ZebraElement {
         $zpl .= $this->getZplCodePosition();
         $zpl .= "\n";
         $zpl .= ZplUtils::zplCommandSautLigne("BQ", [
-                    'N',
-                    $this->model,
-                    $this->mfactor,
+            'N',
+            $this->model,
+            $this->mfactor,
         ]);
         $zpl .= "^FD";
         $zpl .= $this->text;

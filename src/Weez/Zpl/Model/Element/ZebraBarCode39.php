@@ -12,16 +12,23 @@ use Weez\Zpl\Utils\ZplUtils;
  *
  *
  */
-class ZebraBarCode39 extends ZebraBarCode {
+class ZebraBarCode39 extends ZebraBarCode
+{
 
+    /**
+     * @var bool
+     */
     private $checkDigit43 = false;
+
     /**
      *
      * @param float $positionX left margin (explain in dots)
      * @param float $positionY top margin (explain in dots)
      * @param string $text code to write
-     * @param float $barCodeHeigth height of code bar
-     * @param float $barCodeWidth width of code bar
+     * @param float|null $barCodeHeigth height of code bar
+     * @param float|null $barCodeWidth width of code bar
+     * @param int|null $wideBarRatio
+     * @param bool $checkDigit43
      * @param boolean $showTextInterpretation true to print interpretation line
      * @param boolean $showTextInterpretationAbove true to add above, false to add below
      */
@@ -30,6 +37,7 @@ class ZebraBarCode39 extends ZebraBarCode {
         parent::__construct($positionX, $positionY, $text, $barCodeHeigth, $barCodeWidth, $showTextInterpretation, $showTextInterpretationAbove, $wideBarRatio);
         $this->setCheckDigit43($checkDigit43);
     }
+
     /**
      *  {@inheritdoc}
      */
@@ -37,11 +45,11 @@ class ZebraBarCode39 extends ZebraBarCode {
     {
         $zpl = $this->getStartZplCodeBuilder();
         $zpl .= ZplUtils::zplCommandSautLigne("B3", [
-                    $this->zebraRotation->getLetter(),
-                    $this->barCodeHeigth,
-                    $this->checkDigit43,
-                    $this->showTextInterpretation,
-                    $this->showTextInterpretationAbove
+            $this->zebraRotation->getLetter(),
+            $this->barCodeHeigth,
+            $this->checkDigit43,
+            $this->showTextInterpretation,
+            $this->showTextInterpretationAbove
         ]);
         $zpl .= "^FD";
         $zpl .= $this->text;
@@ -49,11 +57,18 @@ class ZebraBarCode39 extends ZebraBarCode {
         return $zpl;
     }
 
+    /**
+     * @return bool
+     */
     public function isCheckDigit43()
     {
         return $this->checkDigit43;
     }
 
+    /**
+     * @param bool $checkDigit43
+     * @return self
+     */
     public function setCheckDigit43($checkDigit43)
     {
         $this->checkDigit43 = $checkDigit43;

@@ -17,7 +17,7 @@ class ZplUtilsTest extends TestCase
     /**
      * Test with only label without element
      */
-    public function testZebraLabelAlone()
+    public function testZebraLabelAlone(): void
     {
 
         self::assertEquals("^XA", ZplUtils::zplCommand("XA"));

@@ -23,7 +23,7 @@ class ZebraLabelTest extends TestCase
     /**
      * Test with only label without element
      */
-    public function testZebraLabelAlone()
+    public function testZebraLabelAlone(): void
     {
         $zebraLabel = new ZebraLabel();
         self::assertEquals("^XA\n^LH0,0\n^FWN,0\n^PON\n^CF0\n^MMT\n^XZ\n", $zebraLabel->getZplCode());
@@ -32,13 +32,13 @@ class ZebraLabelTest extends TestCase
     /**
      * Test with only label without element
      */
-    public function testZebraLabelSize()
+    public function testZebraLabelSize(): void
     {
         $zebraLabel = new ZebraLabel(500, 760);
         self::assertEquals("^XA\n^LH0,0\n^FWN,0\n^PON\n^CF0\n^MMT\n^PW500\n^LL760\n^XZ\n", $zebraLabel->getZplCode());
     }
 
-    public function testZebraLabelFeatures()
+    public function testZebraLabelFeatures(): void
     {
 
         $faker = Factory::create();

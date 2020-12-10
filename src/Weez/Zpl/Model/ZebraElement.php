@@ -9,15 +9,20 @@ use Weez\Zpl\Utils\ZplUtils;
  *
  * @author teddy
  */
-abstract class ZebraElement {
+abstract class ZebraElement
+{
 
     /**
      * x-axis location (in dots)
+     *
+     * @var float
      */
     protected $positionX;
 
     /**
      * y-axis location (in dots)
+     *
+     * @var float
      */
     protected $positionY;
 
@@ -25,7 +30,8 @@ abstract class ZebraElement {
      *
      * @return float
      */
-    public function getPositionX() {
+    public function getPositionX()
+    {
         return $this->positionX;
     }
 
@@ -34,7 +40,8 @@ abstract class ZebraElement {
      * @param float $positionX
      * @return self
      */
-    public function setPositionX($positionX) {
+    public function setPositionX($positionX)
+    {
         $this->positionX = $positionX;
         return $this;
     }
@@ -43,7 +50,8 @@ abstract class ZebraElement {
      *
      * @return float
      */
-    public function getPositionY() {
+    public function getPositionY()
+    {
         return $this->positionY;
     }
 
@@ -52,7 +60,8 @@ abstract class ZebraElement {
      * @param float $positionY
      * @return self
      */
-    public function setPositionY($positionY) {
+    public function setPositionY($positionY)
+    {
         $this->positionY = $positionY;
         return $this;
     }
@@ -64,7 +73,8 @@ abstract class ZebraElement {
      * @param PrinterOptions|null $printerOptions
      * @return string
      */
-    public function getZplCode($printerOptions = null) {
+    public function getZplCode($printerOptions = null)
+    {
         return "";
     }
 
@@ -73,9 +83,10 @@ abstract class ZebraElement {
      *
      * @return string
      */
-    protected function getZplCodePosition() {
+    protected function getZplCodePosition()
+    {
         $zpl = "";
-        if ($this->positionX != null && $this->positionY != null) {
+        if ($this->positionX !== null && $this->positionY !== null) {
             $zpl .= ZplUtils::zplCommand("FT", [$this->positionX, $this->positionY]);
         }
         return $zpl;

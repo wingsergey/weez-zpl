@@ -16,10 +16,26 @@ use Weez\Zpl\Utils\ZplUtils;
 class ZebraGraficBox extends ZebraElement
 {
 
+    /**
+     * @var float
+     */
     private $width;
+
+    /**
+     * @var float
+     */
     private $height;
+
+    /**
+     * @var int
+     */
     private $borderTickness;
+
+    /**
+     * @var string
+     */
     private $lineColor;
+
     /**
      *
      * @param float $positionX
@@ -29,28 +45,30 @@ class ZebraGraficBox extends ZebraElement
      * @param int $borderTickness
      * @param string $lineColor
      */
-    public function __construct($positionX, $positionY, $width, $height, $borderTickness = 1, $lineColor = 'B') {
-        $this->positionX      = $positionX;
-        $this->positionY      = $positionY;
-        $this->width          = $width;
-        $this->height         = $height;
+    public function __construct($positionX, $positionY, $width, $height, $borderTickness = 1, $lineColor = 'B')
+    {
+        $this->positionX = $positionX;
+        $this->positionY = $positionY;
+        $this->width = $width;
+        $this->height = $height;
         $this->borderTickness = $borderTickness;
-        $this->lineColor      = $lineColor;
+        $this->lineColor = $lineColor;
     }
 
     /**
      *
      * {@inheritdoc}
      */
-    public function getZplCode($printerOptions = null) {
+    public function getZplCode($printerOptions = null)
+    {
         $zpl = '';
         $zpl .= $this->getZplCodePosition();
         $zpl .= "\n";
         $zpl .= ZplUtils::zplCommand("GB", [
-                    $this->width,
-                    $this->height,
-                    $this->borderTickness,
-                    $this->lineColor
+            $this->width,
+            $this->height,
+            $this->borderTickness,
+            $this->lineColor
         ]);
         $zpl .= "^FS";
         $zpl .= "\n";

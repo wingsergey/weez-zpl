@@ -2,6 +2,7 @@
 
 namespace Weez\Zpl\Model;
 
+use Weez\Zpl\Constant\ZebraFont;
 use Weez\Zpl\Constant\ZebraPPP;
 
 /**
@@ -11,16 +12,28 @@ use Weez\Zpl\Constant\ZebraPPP;
 class PrinterOptions
 {
 
+    /**
+     * @var ZebraPPP
+     */
     private $zebraPPP;
-    private $defaultZebraFont = null;
-    private $defaultFontSize  = null;
+
+    /**
+     * @var ZebraFont|null
+     */
+    private $defaultZebraFont;
+
+    /**
+     * @var float|null
+     */
+    private $defaultFontSize;
+
     /**
      *
      * @param ZebraPPP|null $zebraPPP
      */
     public function __construct($zebraPPP = null)
     {
-        $this->zebraPPP = $zebraPPP ? : new ZebraPPP(ZebraPPP::DPI_300);
+        $this->zebraPPP = $zebraPPP ?: new ZebraPPP(ZebraPPP::DPI_300);
     }
 
     /**
@@ -44,7 +57,7 @@ class PrinterOptions
 
     /**
      *
-     * @return ZebraFont
+     * @return ZebraFont|null
      */
     public function getDefaultZebraFont()
     {
@@ -53,7 +66,7 @@ class PrinterOptions
 
     /**
      *
-     * @return float
+     * @return float|null
      */
     public function getDefaultFontSize()
     {

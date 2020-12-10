@@ -17,7 +17,7 @@ class ZplAccentTest extends TestCase
     /**
      * Test with only label without element
      */
-    public function testZebraLibrary1()
+    public function testZebraLibrary1(): void
     {
         self::assertEquals("Qt\\82", ZplUtils::convertAccentToZplAsciiHexa("Qté"));
         self::assertEquals("\\85", ZplUtils::convertAccentToZplAsciiHexa("à"));

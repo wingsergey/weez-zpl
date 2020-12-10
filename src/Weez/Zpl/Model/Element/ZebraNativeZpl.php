@@ -11,14 +11,23 @@ use Weez\Zpl\Model\ZebraElement;
 class ZebraNativeZpl extends ZebraElement
 {
 
+    /**
+     * @var string
+     */
     private $zplCode;
+
+    /**
+     * @var bool
+     */
+    private $defaultDrawGraphic;
+
     /**
      *
      * @param string $zplCode
      */
     public function __construct($zplCode)
     {
-        $this->zplCode            = $zplCode;
+        $this->zplCode = $zplCode;
         $this->defaultDrawGraphic = false;
     }
 

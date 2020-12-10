@@ -2,6 +2,7 @@
 
 namespace Weez\Zpl\Model\Element;
 
+use Weez\Zpl\Constant\ZebraFont;
 use Weez\Zpl\Constant\ZebraRotation;
 use Weez\Zpl\Model\PrinterOptions;
 use Weez\Zpl\Model\ZebraElement;
@@ -16,20 +17,21 @@ class ZebraText extends ZebraElement
 {
     /**
      *
-     * @var \Weez\Zpl\Constant\ZebraFont
+     * @var ZebraFont|null
      */
-    protected $zebraFont = null;
+    protected $zebraFont;
+
     /**
      * Explain Font Size (11,13,14).
      * Not in dots.
      *
-     * @var int
+     * @var float|null
      */
-    protected $fontSize  = null;
+    protected $fontSize;
 
     /**
      *
-     * @var int
+     * @var ZebraRotation
      */
     protected $zebraRotation;
 
@@ -40,21 +42,27 @@ class ZebraText extends ZebraElement
     protected $text;
 
     /**
+     * @var PrinterOptions
+     */
+    protected $printerOptions;
+
+    /**
      *
      * @param float $positionX
      * @param float $positionY
      * @param string $text
-     * @param int $fontSize
-     * @param ZebraFont $zebraFont
-     * @param int $zebraRotation
+     * @param float|null $fontSize
+     * @param ZebraFont|null $zebraFont
+     * @param ZebraRotation|null $zebraRotation
      */
-    public function __construct($positionX, $positionY, $text, $fontSize = null, $zebraFont = null, $zebraRotation = null) {
-        $this->zebraFont     = $zebraFont;
-        $this->fontSize      = $fontSize;
-        $this->zebraRotation = $zebraRotation ? : new ZebraRotation(ZebraRotation::NORMAL);
-        $this->text          = $text;
-        $this->positionX     = $positionX;
-        $this->positionY      = $positionY;
+    public function __construct($positionX, $positionY, $text, $fontSize = null, $zebraFont = null, $zebraRotation = null)
+    {
+        $this->zebraFont = $zebraFont;
+        $this->fontSize = $fontSize;
+        $this->zebraRotation = $zebraRotation ?: new ZebraRotation(ZebraRotation::NORMAL);
+        $this->text = $text;
+        $this->positionX = $positionX;
+        $this->positionY = $positionY;
         $this->printerOptions = new PrinterOptions();
     }
 
@@ -63,21 +71,20 @@ class ZebraText extends ZebraElement
      *
      *  {@inheritdoc}
      */
-    public function getZplCode($_printerOptions = null) {
-        $printerOptions = $_printerOptions? : $this->printerOptions;
+    public function getZplCode($_printerOptions = null)
+    {
+        $printerOptions = $_printerOptions ?: $this->printerOptions;
         $zpl = '';
         $zpl .= $this->getZplCodePosition();
 
         if (!is_null($this->fontSize) && !is_null($this->zebraFont)) {
             //This element has specified size and font
-            $dimension = ZplUtils::extractDotsFromFont($this->zebraFont, $this->fontSize, $printerOptions->getZebraPPP()->getDotByMm());
-            $zpl .= ZplUtils::zplCommand("A", [$this->zebraFont->getLetter() . $this->zebraRotation->getLetter(),
-                        $dimension[0], $dimension[1]]);
+            $dimension = ZplUtils::extractDotsFromFont($this->zebraFont, $this->fontSize, $printerOptions->getZebraPPP());
+            $zpl .= ZplUtils::zplCommand("A", [$this->zebraFont->getLetter() . $this->zebraRotation->getLetter(), $dimension[0], $dimension[1]]);
         } else if (!is_null($this->fontSize) && !is_null($printerOptions->getDefaultZebraFont())) {
             //This element has specified size, but with default font
-            $dimension = ZplUtils::extractDotsFromFont($printerOptions->getDefaultZebraFont(), $this->fontSize, $printerOptions->getZebraPPP()->getDotByMm());
-            $zpl .= ZplUtils::zplCommand("A", [$printerOptions->getDefaultZebraFont()->getLetter() . $this->zebraRotation->getLetter(),
-                        $dimension[0], $dimension[1]]);
+            $dimension = ZplUtils::extractDotsFromFont($printerOptions->getDefaultZebraFont(), $this->fontSize, $printerOptions->getZebraPPP());
+            $zpl .= ZplUtils::zplCommand("A", [$printerOptions->getDefaultZebraFont()->getLetter() . $this->zebraRotation->getLetter(), $dimension[0], $dimension[1]]);
         }
 
         $zpl .= "^FH\\^FD"; //We allow hexadecimal and start element

@@ -14,7 +14,7 @@ use Weez\Zpl\Constant\ZebraFont;
 class ZebraFontTest extends TestCase
 {
 
-    public function testConstante()
+    public function testConstante(): void
     {
         // Assert
         $this->assertEquals(0, ZebraFont::ZEBRA_ZERO);

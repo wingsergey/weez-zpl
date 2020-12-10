@@ -9,15 +9,23 @@ namespace Weez\Zpl\Constant;
 class ZebraPrintMode
 {
 
-    const TEAR_OFF          = "T";
-    const REWIND            = "R";
-    const PEEL_OFF_SELECT   = true;
+    const TEAR_OFF = "T";
+    const REWIND = "R";
+    const PEEL_OFF_SELECT = true;
     const PEEL_OFF_NOSELECT = false;
-    const CUTTER            = "C";
+    const CUTTER = "C";
 
     //TEAR_OFF("T"), REWIND("R"), PEEL_OFF_SELECT("P", true), PEEL_OFF_NOSELECT("P", false), CUTTER("C");
+    /**
+     * @var string
+     */
     private $desiredMode;
+
+    /**
+     * @var string|null
+     */
     private $prePeelSelect = '';
+
     /**
      *
      * @param string $desiredMode
@@ -44,7 +52,7 @@ class ZebraPrintMode
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPrePeelSelect()
     {

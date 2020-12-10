@@ -15,26 +15,30 @@ class ZplUtils
     /**
      * Fonction called by zplCommand to cast variable $object and ajust for zpl code
      *
-     * @param $object
+     * @param mixed $object
+     *
+     * @return int|string
      */
     private static function variableObjectToZplCode($object)
     {
         if (!is_null($object)) {
             if (is_numeric($object)) {
-                return ((int) $object);
-            } else if (is_bool($object)) {
-
-                if (((bool) $object)) {
-                    return "Y";
-                } else {
-                    return "N";
-                }
-            } else {
-                return $object;
+                return ((int)$object);
             }
-        } else {
-            return "";
+
+            if (is_bool($object)) {
+
+                if (((bool)$object)) {
+                    return "Y";
+                }
+
+                return "N";
+            }
+
+            return $object;
         }
+
+        return "";
     }
 
     /**
@@ -46,10 +50,14 @@ class ZplUtils
      */
     public static function zplCommand($command, $variables = null)
     {
-        $zpl          = '';
+        $zpl = '';
         $zpl .= "^";
         $zpl .= $command;
-        $cv  = $variables ? count($variables) : 0;
+        if(!is_array($variables)) {
+            return $zpl;
+        }
+
+        $cv = count($variables);
         if ($cv > 1) {
             $zpl .= self::variableObjectToZplCode($variables[0]);
             for ($i = 1; $i < $cv; $i++) {
@@ -57,7 +65,7 @@ class ZplUtils
                 $zpl .= self::variableObjectToZplCode($variables[$i]);
             }
         } else if ($cv == 1) {
-//Only one element in variables
+            //Only one element in variables
             $zpl .= self::variableObjectToZplCode($variables[0]);
         }
         return $zpl;
@@ -84,7 +92,7 @@ class ZplUtils
      * Please complete this method or use dot in yous params
      *
      * @param ZebraFont $zebraFont
-     * @param int $fontSize
+     * @param float $fontSize
      * @param ZebraPPP $zebraPPP
      * @return array[height,width] in dots
      */
@@ -92,7 +100,7 @@ class ZplUtils
     {
         $tab = [];
 
-        if (ZebraFont::ZEBRA_ZERO == $zebraFont->getLetter() && ZebraPPP::DPI_300 == $zebraPPP) {
+        if (ZebraFont::ZEBRA_ZERO == $zebraFont->getLetter() && ZebraPPP::DPI_300 == $zebraPPP->getDotByMm()) {
             //We use ratio to converted (based on ratio used by Zebra Designer Tools)
             $tab[0] = round($fontSize * 4.16); //Heigth
             $tab[1] = round($fontSize * 4.06); //With
@@ -112,13 +120,15 @@ class ZplUtils
     {
         return round($point * 1.33);
     }
+
     /**
      * Convert pixel(px) in dot
      * @param float $mm
      * @param float $zebraPPP
      * @return float
      */
-    public static function convertMmInDot($mm, $zebraPPP = ZebraPPP::DPI_203) {
+    public static function convertMmInDot($mm, $zebraPPP = ZebraPPP::DPI_203)
+    {
         return round($mm * $zebraPPP);
     }
 
