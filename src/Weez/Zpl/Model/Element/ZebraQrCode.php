@@ -7,9 +7,9 @@ use Weez\Zpl\Utils\ZplUtils;
 
 /**
  * Element to create a bar code 39
- * 
+ *
  * Zpl command : ^B3 and ^BY
- * 
+ *
  */
 class ZebraQrCode extends ZebraElement {
 

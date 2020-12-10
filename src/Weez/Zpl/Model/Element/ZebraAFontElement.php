@@ -9,15 +9,15 @@ use Weez\Zpl\Utils\ZplUtils;
 
 /**
  * Element to set a font and size (explain in dot).
- * 
+ *
  * This command is apply only on the next element (in zebraElements list).
- * 
+ *
  * This command could be use when your font and PPP is not yet implemented
- * 
+ *
  * ZPL Command : ^A
- * 
- * 
- * 
+ *
+ *
+ *
  */
 class ZebraAFontElement extends ZebraElement
 {
@@ -30,7 +30,7 @@ class ZebraAFontElement extends ZebraElement
     /**
      *
      * Constructor to use if you want have non-horizontal text.
-     * 
+     *
      * @param ZebraFont $zebraFont
      * @param int $zebraRotation
      * @param float $dotHeigth height explain in dots

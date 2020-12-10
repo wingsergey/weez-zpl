@@ -7,11 +7,11 @@ use Weez\Zpl\Utils\ZplUtils;
 
 /**
  * Zebra element to create a box (or line)
- * 
+ *
  * Zpl command : ^GB
- * 
+ *
  * @author matthiasvets
- * 
+ *
  */
 class ZebraGraficBox extends ZebraElement
 {

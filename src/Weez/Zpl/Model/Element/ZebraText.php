@@ -9,8 +9,8 @@ use Weez\Zpl\Utils\ZplUtils;
 
 /**
  * Zebra element to add Text to specified position.
- * 
- * 
+ *
+ *
  */
 class ZebraText extends ZebraElement
 {
@@ -58,7 +58,7 @@ class ZebraText extends ZebraElement
         $this->printerOptions = new PrinterOptions();
     }
 
-    
+
     /**
      *
      *  {@inheritdoc}
@@ -67,7 +67,7 @@ class ZebraText extends ZebraElement
         $printerOptions = $_printerOptions? : $this->printerOptions;
         $zpl = '';
         $zpl .= $this->getZplCodePosition();
-        
+
         if (!is_null($this->fontSize) && !is_null($this->zebraFont)) {
             //This element has specified size and font
             $dimension = ZplUtils::extractDotsFromFont($this->zebraFont, $this->fontSize, $printerOptions->getZebraPPP()->getDotByMm());

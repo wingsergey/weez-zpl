@@ -1,14 +1,15 @@
 <?php
 
-namespace Weez\Zpl\Utils;
+namespace Weez\Zpl\Tests\Utils;
 
 use PHPUnit\Framework\TestCase;
+use Weez\Zpl\Utils\ZplUtils;
 
 /**
  * Common method used to manipulate ZPL
- * 
+ *
  * @author ttropard
- * 
+ *
  */
 class ZplAccentTest extends TestCase
 {
@@ -18,8 +19,7 @@ class ZplAccentTest extends TestCase
      */
     public function testZebraLibrary1()
     {
-        $this->assertEquals("Qt\\82", ZplUtils::convertAccentToZplAsciiHexa("Qté"));
-        $this->assertEquals("\\85", ZplUtils::convertAccentToZplAsciiHexa("à"));
+        self::assertEquals("Qt\\82", ZplUtils::convertAccentToZplAsciiHexa("Qté"));
+        self::assertEquals("\\85", ZplUtils::convertAccentToZplAsciiHexa("à"));
     }
-
 }

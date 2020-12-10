@@ -23,7 +23,7 @@ class ZplUtils
             if (is_numeric($object)) {
                 return ((int) $object);
             } else if (is_bool($object)) {
-                
+
                 if (((bool) $object)) {
                     return "Y";
                 } else {
@@ -49,7 +49,7 @@ class ZplUtils
         $zpl          = '';
         $zpl .= "^";
         $zpl .= $command;
-        $cv  = count($variables);
+        $cv  = $variables ? count($variables) : 0;
         if ($cv > 1) {
             $zpl .= self::variableObjectToZplCode($variables[0]);
             for ($i = 1; $i < $cv; $i++) {
@@ -104,7 +104,7 @@ class ZplUtils
 
     /**
      * Convert point(pt) in pixel(px)
-     * 
+     *
      * @param int $point
      * @return float
      */
@@ -124,7 +124,7 @@ class ZplUtils
 
     /**
      * Function used to converted ASCII >127 in \hexaCode accepted by ZPL language
-     * 
+     *
      * @param string $str
      * @return string with charactere remove
      */

@@ -8,9 +8,9 @@ use Weez\Zpl\Utils\ZplUtils;
 
 /**
  * Abstract Zebra element to represent a bar code instruction
- * 
+ *
  * Command ZPL : All instruction starting ^B
- * 
+ *
  */
 abstract class ZebraBarCode extends ZebraElement
 {
@@ -101,7 +101,7 @@ abstract class ZebraBarCode extends ZebraElement
     }
 
    /**
-    * 
+    *
     * @return float
     */
     public function getBarCodeWidth()
@@ -109,7 +109,7 @@ abstract class ZebraBarCode extends ZebraElement
         return $this->moduleWidth;
     }
 /**
- * 
+ *
  * @return float
  */
     public function getBarCodeHeigth()
@@ -117,7 +117,7 @@ abstract class ZebraBarCode extends ZebraElement
         return $this->barCodeHeigth;
     }
 /**
- * 
+ *
  * @return float
  */
     public function getWideBarRatio()
@@ -125,7 +125,7 @@ abstract class ZebraBarCode extends ZebraElement
         return $this->wideBarRatio;
     }
 /**
- * 
+ *
  * @return int
  */
     public function getZebraRotation()
@@ -133,7 +133,7 @@ abstract class ZebraBarCode extends ZebraElement
         return $this->zebraRotation;
     }
 /**
- * 
+ *
  * @return boolean
  */
     public function isShowTextInterpretation()
@@ -141,7 +141,7 @@ abstract class ZebraBarCode extends ZebraElement
         return $this->showTextInterpretation;
     }
 /**
- * 
+ *
  * @return boolean
  */
     public function isShowTextInterpretationAbove()
@@ -149,7 +149,7 @@ abstract class ZebraBarCode extends ZebraElement
         return $this->showTextInterpretationAbove;
     }
 /**
- * 
+ *
  * @return string
  */
     public function getText()
@@ -157,7 +157,7 @@ abstract class ZebraBarCode extends ZebraElement
         return $this->text;
     }
 /**
- * 
+ *
  * @param float $barCodeWidth
  * @return self
  */
@@ -197,7 +197,7 @@ abstract class ZebraBarCode extends ZebraElement
         return $this;
     }
 /**
- * 
+ *
  * @param boolean $showTextInterpretation
  * @return self
  */

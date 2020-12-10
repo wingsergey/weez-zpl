@@ -60,7 +60,7 @@ abstract class ZebraElement {
     /**
      *
      * Return Zpl code for this Element
-     * 
+     *
      * @param PrinterOptions|null $printerOptions
      * @return string
      */

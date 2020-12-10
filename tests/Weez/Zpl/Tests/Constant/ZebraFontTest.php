@@ -1,9 +1,10 @@
 <?php
 
 
-namespace Weez\Zpl\Constant;
+namespace Weez\Zpl\Tests\Constant;
 
 use PHPUnit\Framework\TestCase;
+use Weez\Zpl\Constant\ZebraFont;
 
 /**
  * Description of ZebraFont

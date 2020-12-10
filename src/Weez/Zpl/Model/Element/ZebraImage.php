@@ -8,11 +8,11 @@ use Zebra\Zpl\Image;
 
 /**
  * Zebra element to create image
- * 
- * Zpl command : 
- * 
+ *
+ * Zpl command :
+ *
  * @author matthiasvets
- * 
+ *
  */
 class ZebraImage extends ZebraElement {
 

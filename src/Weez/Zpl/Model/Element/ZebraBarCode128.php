@@ -7,11 +7,11 @@ use Weez\Zpl\Utils\ZplUtils;
 
 /**
  * Element to create a bar code 128
- * 
+ *
  * Zpl command : ^BC
- * 
+ *
  * @author matthiasvets
- * 
+ *
  */
 class ZebraBarCode128 extends ZebraBarCode {
 

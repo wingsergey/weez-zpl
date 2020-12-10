@@ -17,14 +17,17 @@
         "phpstan/phpstan": "^0.12.55",
         "phpunit/phpunit": "^9.4"
     },
+    "suggest": {
+        "ext-gd": "For image processing"
+    },
     "autoload": {
         "psr-0": {
-            "Weez": "src/"
+            "Weez\\Zpl\\": "src"
         }
     },
     "autoload-dev": {
         "psr-0": {
-            "tests": ""
+            "Weez\\Zpl\\Tests\\": "tests"
         }
     }
 }
