@@ -241,5 +241,4 @@ abstract class ZebraBarCode extends ZebraElement
         $this->text = $text;
         return $this;
     }
-
 }

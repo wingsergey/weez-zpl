@@ -39,5 +39,4 @@ class ZebraNativeZpl extends ZebraElement
     {
         return $this->zplCode;
     }
-
 }

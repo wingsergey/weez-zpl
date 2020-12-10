@@ -9,9 +9,9 @@ namespace Weez\Zpl\Constant;
  */
 class ZebraPPP
 {
-    const DPI_203 = 8;
-    const DPI_300 = 12;
-    const DPI_600 = 23.5;
+    public const DPI_203 = 8;
+    public const DPI_300 = 12;
+    public const DPI_600 = 23.5;
 
     /**
      * @var float
@@ -34,5 +34,4 @@ class ZebraPPP
     {
         return $this->dotByMm;
     }
-
 }

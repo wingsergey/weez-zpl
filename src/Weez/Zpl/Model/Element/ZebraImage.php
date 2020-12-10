@@ -67,5 +67,4 @@ class ZebraImage extends ZebraElement
         $zpl .= "\n";
         return $zpl;
     }
-
 }

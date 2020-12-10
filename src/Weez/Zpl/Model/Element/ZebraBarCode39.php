@@ -74,5 +74,4 @@ class ZebraBarCode39 extends ZebraBarCode
         $this->checkDigit43 = $checkDigit43;
         return $this;
     }
-
 }

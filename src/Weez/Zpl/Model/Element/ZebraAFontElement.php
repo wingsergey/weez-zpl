@@ -74,5 +74,4 @@ class ZebraAFontElement extends ZebraElement
             $this->dotsWidth
         ]);
     }
-
 }

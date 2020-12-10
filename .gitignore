@@ -1,7 +1,9 @@
 composer.phar
 /.phpunit.result.cache
 /*.phpunit.xml
+.phpcs-cache
 /phpunit.xml
+/phpcs.xml.dist
 /phpstan.neon
 /vendor/
 .idea

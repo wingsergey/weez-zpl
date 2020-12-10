@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Weez\Zpl\Constant;
 
 /**
@@ -10,10 +9,10 @@ namespace Weez\Zpl\Constant;
 class ZebraRotation
 {
 
-    const NORMAL = "N";
-    const ROTATE_90 = "R";
-    const INVERTED = "I";
-    const READ_FROM_BOTTOM = "B";
+    public const NORMAL = "N";
+    public const ROTATE_90 = "R";
+    public const INVERTED = "I";
+    public const READ_FROM_BOTTOM = "B";
 
     /**
      * @var string
@@ -36,5 +35,4 @@ class ZebraRotation
     {
         return $this->letter;
     }
-
 }

@@ -64,5 +64,4 @@ class ZebraQrCode extends ZebraElement
         $zpl .= ZplUtils::zplCommandSautLigne("FS");
         return $zpl;
     }
-
 }

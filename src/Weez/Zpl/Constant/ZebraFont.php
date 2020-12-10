@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Weez\Zpl\Constant;
 
 /**
@@ -10,13 +9,13 @@ namespace Weez\Zpl\Constant;
 class ZebraFont
 {
 
-    const ZEBRA_ZERO = 0;
-    const ZEBRA_A = "A";
-    const ZEBRA_B = "B";
-    const ZEBRA_C = "C";
-    const ZEBRA_D = "D";
-    const ZEBRA_F = "F";
-    const ZEBRA_G = "G";
+    public const ZEBRA_ZERO = 0;
+    public const ZEBRA_A = "A";
+    public const ZEBRA_B = "B";
+    public const ZEBRA_C = "C";
+    public const ZEBRA_D = "D";
+    public const ZEBRA_F = "F";
+    public const ZEBRA_G = "G";
 
     /**
      * @var int|string

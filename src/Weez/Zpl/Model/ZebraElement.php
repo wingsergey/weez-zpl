@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Weez\Zpl\Model;
 
 use Weez\Zpl\Utils\ZplUtils;

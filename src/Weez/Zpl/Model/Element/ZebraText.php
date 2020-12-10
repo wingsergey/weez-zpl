@@ -81,7 +81,7 @@ class ZebraText extends ZebraElement
             //This element has specified size and font
             $dimension = ZplUtils::extractDotsFromFont($this->zebraFont, $this->fontSize, $printerOptions->getZebraPPP());
             $zpl .= ZplUtils::zplCommand("A", [$this->zebraFont->getLetter() . $this->zebraRotation->getLetter(), $dimension[0], $dimension[1]]);
-        } else if (!is_null($this->fontSize) && !is_null($printerOptions->getDefaultZebraFont())) {
+        } elseif (!is_null($this->fontSize) && !is_null($printerOptions->getDefaultZebraFont())) {
             //This element has specified size, but with default font
             $dimension = ZplUtils::extractDotsFromFont($printerOptions->getDefaultZebraFont(), $this->fontSize, $printerOptions->getZebraPPP());
             $zpl .= ZplUtils::zplCommand("A", [$printerOptions->getDefaultZebraFont()->getLetter() . $this->zebraRotation->getLetter(), $dimension[0], $dimension[1]]);

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Weez\Zpl\Tests\Constant;
 
 use PHPUnit\Framework\TestCase;
@@ -19,5 +18,4 @@ class ZebraFontTest extends TestCase
         // Assert
         $this->assertEquals(0, ZebraFont::ZEBRA_ZERO);
     }
-
 }

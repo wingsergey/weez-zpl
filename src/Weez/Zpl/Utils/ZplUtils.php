@@ -27,7 +27,6 @@ class ZplUtils
             }
 
             if (is_bool($object)) {
-
                 if (((bool)$object)) {
                     return "Y";
                 }
@@ -53,7 +52,7 @@ class ZplUtils
         $zpl = '';
         $zpl .= "^";
         $zpl .= $command;
-        if(!is_array($variables)) {
+        if (!is_array($variables)) {
             return $zpl;
         }
 
@@ -64,7 +63,7 @@ class ZplUtils
                 $zpl .= ",";
                 $zpl .= self::variableObjectToZplCode($variables[$i]);
             }
-        } else if ($cv == 1) {
+        } elseif ($cv == 1) {
             //Only one element in variables
             $zpl .= self::variableObjectToZplCode($variables[0]);
         }
@@ -147,5 +146,4 @@ class ZplUtils
         }
         return $str;
     }
-
 }

@@ -94,5 +94,4 @@ class PrinterOptions
         $this->defaultFontSize = $defaultFontSize;
         return $this;
     }
-
 }
