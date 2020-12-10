@@ -1,25 +1,30 @@
 {
-    "name": "variograma/weez-zpl",
-    "description": "Project weez-zpl, forked from teddy-dubal/weez-zpl",
+    "name": "stephandesouza/weez-zpl",
+    "description": "Project weez-zpl, forked from teddy-dubal/weez-zpl. This one is focused on its maintenance.",
     "authors": [
         {
-            "name": "Teddy Dona",
-            "email": "teddy.dona@gmail.com"
+            "name": "Stephan de Souza",
+            "email": "contato@stephandesouza.com"
         }
     ],
     "require": {
+        "php": "^7.3 || ^8",
         "robgridley/zebra": "^1.0"
     },
     "require-dev": {
-        "fzaninotto/faker": "* v1.6.0",
-        "mockery/mockery": "^0.9.5",
-        "phpunit/phpunit": "^5.4",
-        "phpspec/phpspec": "^2.5"
+        "fzaninotto/faker": "^1.9.1",
+        "mockery/mockery": "^1.3.1",
+        "phpstan/phpstan": "^0.12.55",
+        "phpunit/phpunit": "^9.4"
     },
     "autoload": {
         "psr-0": {
-            "tests": "",
             "Weez": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-0": {
+            "tests": ""
         }
     }
 }
