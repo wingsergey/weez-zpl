@@ -2,9 +2,9 @@
 
 namespace Weez\Zpl\Model\Element;
 
-use Weez\Zpl\Exceptions\InvalidZebraImageException;
 use Weez\Zpl\Model\ZebraElement;
 use Weez\Zpl\Utils\ZplUtils;
+use Zebra\Zpl\GdDecoder;
 use Zebra\Zpl\Image;
 
 /**
@@ -37,10 +37,8 @@ class ZebraImage extends ZebraElement
      */
     public function __construct($positionX, $positionY, $path, $compression = 'A')
     {
-        if (!$image = file_get_contents($path)) {
-            throw new InvalidZebraImageException();
-        }
-        $this->resource = new Image($image);
+        $decoder = GdDecoder::fromPath($path);
+        $this->resource = new Image($decoder);
         $this->compression = $compression;
         $this->positionX = $positionX;
         $this->positionY = $positionY;

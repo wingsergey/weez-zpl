@@ -9,7 +9,7 @@
     ],
     "require": {
         "php": "^7.3 || ^8",
-        "robgridley/zebra": "^1.0"
+        "robgridley/zebra": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "^1.9.1",
