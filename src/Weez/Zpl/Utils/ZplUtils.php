@@ -63,6 +63,9 @@ class ZplUtils
                 $zpl .= ",";
                 $zpl .= self::variableObjectToZplCode($variables[$i]);
             }
+
+            //Prevents leading comma
+            $zpl = rtrim($zpl, ',');
         } elseif ($cv == 1) {
             //Only one element in variables
             $zpl .= self::variableObjectToZplCode($variables[0]);

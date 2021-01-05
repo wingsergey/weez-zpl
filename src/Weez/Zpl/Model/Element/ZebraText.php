@@ -36,6 +36,11 @@ class ZebraText extends ZebraElement
     protected $zebraRotation;
 
     /**
+     * @var ZebraFieldBlock|null
+     */
+    protected $fieldBlock;
+
+    /**
      *
      * @var string
      */
@@ -54,8 +59,9 @@ class ZebraText extends ZebraElement
      * @param float|null $fontSize
      * @param ZebraFont|null $zebraFont
      * @param ZebraRotation|null $zebraRotation
+     * @param ZebraFieldBlock|null $fieldBlock
      */
-    public function __construct($positionX, $positionY, $text, $fontSize = null, $zebraFont = null, $zebraRotation = null)
+    public function __construct($positionX, $positionY, $text, $fontSize = null, $zebraFont = null, $zebraRotation = null, $fieldBlock = null)
     {
         $this->zebraFont = $zebraFont;
         $this->fontSize = $fontSize;
@@ -63,6 +69,7 @@ class ZebraText extends ZebraElement
         $this->text = $text;
         $this->positionX = $positionX;
         $this->positionY = $positionY;
+        $this->fieldBlock = $fieldBlock;
         $this->printerOptions = new PrinterOptions();
     }
 
@@ -85,6 +92,10 @@ class ZebraText extends ZebraElement
             //This element has specified size, but with default font
             $dimension = ZplUtils::extractDotsFromFont($printerOptions->getDefaultZebraFont(), $this->fontSize, $printerOptions->getZebraPPP());
             $zpl .= ZplUtils::zplCommand("A", [$printerOptions->getDefaultZebraFont()->getLetter() . $this->zebraRotation->getLetter(), $dimension[0], $dimension[1]]);
+        }
+
+        if ($this->fieldBlock) {
+            $zpl .= $this->fieldBlock->getZplCode($printerOptions);
         }
 
         $zpl .= "^FH\\^FD"; //We allow hexadecimal and start element
