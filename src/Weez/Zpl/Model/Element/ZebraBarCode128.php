@@ -2,7 +2,6 @@
 
 namespace Weez\Zpl\Model\Element;
 
-use Weez\Zpl\Model\PrinterOptions;
 use Weez\Zpl\Utils\ZplUtils;
 
 /**
