@@ -17,6 +17,6 @@ class ZebraFieldBlockTest extends TestCase
     public function testGetZplCode(): void
     {
         $barcode = new ZebraFieldBlock(500, 2, 10, new ZebraAlignment(ZebraAlignment::CENTER));
-        self::assertEquals("^FB500,2,10,C", $barcode->getZplCode());
+        self::assertEquals("^FB500,2,10,C,", $barcode->getZplCode());
     }
 }

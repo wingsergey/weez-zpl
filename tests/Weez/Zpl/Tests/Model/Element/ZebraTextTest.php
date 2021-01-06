@@ -20,7 +20,7 @@ class ZebraTextTest extends TestCase
     {
         $block = new ZebraFieldBlock(500, 2, 1, new ZebraAlignment(ZebraAlignment::RIGHT));
         $text = new ZebraText(20, 20, "Text", null, null, null, $block);
-        self::assertEquals("^FT20,20^FB500,2,1,R^FH\^FDText^FS\n", $text->getZplCode());
+        self::assertEquals("^FT20,20^FB500,2,1,R,^FH\^FDText^FS\n", $text->getZplCode());
     }
 
     public function testGetZplCodeAllowDecimalTest(): void

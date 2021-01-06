@@ -56,20 +56,12 @@ class ZplUtils
             return $zpl;
         }
 
-        $cv = count($variables);
-        if ($cv > 1) {
-            $zpl .= self::variableObjectToZplCode($variables[0]);
-            for ($i = 1; $i < $cv; $i++) {
-                $zpl .= ",";
-                $zpl .= self::variableObjectToZplCode($variables[$i]);
-            }
+        $zplVariables = array_map(static function ($iValue) {
+            return self::variableObjectToZplCode($iValue);
+        }, $variables);
 
-            //Prevents leading comma
-            $zpl = rtrim($zpl, ',');
-        } elseif ($cv == 1) {
-            //Only one element in variables
-            $zpl .= self::variableObjectToZplCode($variables[0]);
-        }
+        $zpl .= implode(',', $zplVariables);
+
         return $zpl;
     }
 
