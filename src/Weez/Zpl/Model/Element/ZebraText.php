@@ -47,6 +47,11 @@ class ZebraText extends ZebraElement
     protected $text;
 
     /**
+     * @var bool
+     */
+    protected $allowHexadecimal;
+
+    /**
      * @var PrinterOptions
      */
     protected $printerOptions;
@@ -71,8 +76,26 @@ class ZebraText extends ZebraElement
         $this->positionY = $positionY;
         $this->fieldBlock = $fieldBlock;
         $this->printerOptions = new PrinterOptions();
+        $this->allowHexadecimal = true;
     }
 
+    /**
+     * @return bool
+     */
+    public function isAllowHexadecimal(): bool
+    {
+        return $this->allowHexadecimal;
+    }
+
+    /**
+     * @param bool $allowHexadecimal
+     * @return self
+     */
+    public function setAllowHexadecimal(bool $allowHexadecimal)
+    {
+        $this->allowHexadecimal = $allowHexadecimal;
+        return $this;
+    }
 
     /**
      *
@@ -98,7 +121,11 @@ class ZebraText extends ZebraElement
             $zpl .= $this->fieldBlock->getZplCode($printerOptions);
         }
 
-        $zpl .= "^FH\\^FD"; //We allow hexadecimal and start element
+        if ($this->allowHexadecimal) {
+            $zpl .= "^FH\\";
+        }
+
+        $zpl .= "^FD"; //We allow hexadecimal and start element
         $zpl .= ZplUtils::convertAccentToZplAsciiHexa($this->text);
         $zpl .= ZplUtils::zplCommandSautLigne("FS");
 
