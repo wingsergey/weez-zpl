@@ -14,13 +14,13 @@ class ZebraPPP
     public const DPI_600 = 23.5;
 
     /**
-     * @var float
+     * @var float|int
      */
     private $dotByMm;
 
     /**
      *
-     * @param float $dotByMm
+     * @param float|int $dotByMm
      */
     public function __construct($dotByMm)
     {
@@ -28,7 +28,7 @@ class ZebraPPP
     }
 
     /**
-     * @return float
+     * @return float|int
      */
     public function getDotByMm()
     {

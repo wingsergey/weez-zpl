@@ -94,13 +94,24 @@ class ZplUtils
     {
         $tab = [];
 
-        if (ZebraFont::ZEBRA_ZERO == $zebraFont->getLetter() && ZebraPPP::DPI_300 == $zebraPPP->getDotByMm()) {
-            //We use ratio to converted (based on ratio used by Zebra Designer Tools)
-            $tab[0] = round($fontSize * 4.16); //Heigth
-            $tab[1] = round($fontSize * 4.06); //With
-        } else {
-            throw new Exception("This PPP and this font are not yet supported. Please use ZebraAFontElement.");
+        $font = $zebraFont->getLetter();
+        $dpi = $zebraPPP->getDotByMm();
+
+        switch (true) {
+            case ZebraFont::ZEBRA_ZERO === $font && ZebraPPP::DPI_300 === $dpi:
+                //We use ratio to converted (based on ratio used by Zebra Designer Tools)
+                $tab[0] = round($fontSize * 4.16); //Heigth
+                $tab[1] = round($fontSize * 4.06); //With
+                break;
+            case ZebraFont::ZEBRA_ZERO === $font && ZebraPPP::DPI_203 === $dpi:
+                //We use ratio to converted (based on ratio used by Zebra Designer Tools)
+                $tab[0] = round($fontSize * 2.81); //Heigth
+                $tab[1] = round($fontSize * 2.74); //With
+                break;
+            default:
+                throw new Exception("This PPP and this font are not yet supported. Please use ZebraAFontElement.");
         }
+
         return $tab;
     }
 
