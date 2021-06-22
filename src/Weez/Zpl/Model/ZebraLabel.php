@@ -233,7 +233,7 @@ class ZebraLabel
             $zpl .= ZplUtils::zplCommandSautLigne("CF", ZplUtils::extractDotsFromFont($defaultZebraFont, $defaultZebraFontSize, $this->printerOptions->getZebraPPP()));
         }
         foreach ($this->zebraElements as $zebraElements) {
-            $zpl .= $zebraElements->getZplCode($this->printerOptions) . "\n";
+            $zpl .= $zebraElements->getZplCode($this->printerOptions);
         }
         $zpl .= ZplUtils::zplCommandSautLigne("XZ"); //End Label
         return $zpl;

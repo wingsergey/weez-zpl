@@ -37,6 +37,6 @@ class ZebraNativeZpl extends ZebraElement
      */
     public function getZplCode($printerOptions = null)
     {
-        return $this->zplCode;
+        return $this->zplCode . "\n";
     }
 }
