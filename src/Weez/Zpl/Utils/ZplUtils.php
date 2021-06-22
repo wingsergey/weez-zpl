@@ -76,6 +76,7 @@ class ZplUtils
     {
         $zpl = self::zplCommand($command, $variables);
         $zpl .= "\n";
+
         return $zpl;
     }
 
@@ -92,25 +93,23 @@ class ZplUtils
      */
     public static function extractDotsFromFont($zebraFont, $fontSize, $zebraPPP)
     {
+        $tab = self::calculateFontDots($zebraFont, $fontSize, $zebraPPP);
+
+        return $tab;
+    }
+
+    public static function calculateFontDots($zebraFont, $fontSize, $zebraPPP)
+    {
         $tab = [];
 
         $font = $zebraFont->getLetter();
-        $dpi = $zebraPPP->getDotByMm();
+        $dpi  = $zebraPPP->getDotByMm();
 
-        switch (true) {
-            case ZebraFont::ZEBRA_ZERO === $font && ZebraPPP::DPI_300 === $dpi:
-                //We use ratio to converted (based on ratio used by Zebra Designer Tools)
-                $tab[0] = round($fontSize * 4.16); //Heigth
-                $tab[1] = round($fontSize * 4.06); //With
-                break;
-            case ZebraFont::ZEBRA_ZERO === $font && ZebraPPP::DPI_203 === $dpi:
-                //We use ratio to converted (based on ratio used by Zebra Designer Tools)
-                $tab[0] = round($fontSize * 2.81); //Heigth
-                $tab[1] = round($fontSize * 2.74); //With
-                break;
-            default:
-                throw new Exception("This PPP and this font are not yet supported. Please use ZebraAFontElement.");
-        }
+        $fontHeight = $fontSize * ZebraFont::FONT_SIZE_MM_PER_POINT * $dpi;
+        $proportion = ZebraFont::getFontProportions($font);
+
+        $tab[0] = round($fontHeight); // Heigth
+        $tab[1] = round($tab[0] * $proportion); // Width
 
         return $tab;
     }
@@ -128,6 +127,7 @@ class ZplUtils
 
     /**
      * Convert pixel(px) in dot
+     *
      * @param float $mm
      * @param float $zebraPPP
      * @return float
@@ -150,6 +150,7 @@ class ZplUtils
             $str = str_replace("à", "\\85", $str);
             $str = str_replace("è", "\\8A", $str);
         }
+
         return $str;
     }
 }
