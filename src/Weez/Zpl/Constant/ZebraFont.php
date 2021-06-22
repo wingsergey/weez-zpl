@@ -9,13 +9,14 @@ namespace Weez\Zpl\Constant;
 class ZebraFont
 {
 
-    public const ZEBRA_ZERO = 0;
+    public const ZEBRA_ZERO = "0";
     public const ZEBRA_A = "A";
     public const ZEBRA_B = "B";
     public const ZEBRA_C = "C";
     public const ZEBRA_D = "D";
     public const ZEBRA_F = "F";
     public const ZEBRA_G = "G";
+    public const ZEBRA_T = "T";
 
     public const FONT_SHIFTS = [
         self::ZEBRA_ZERO => [
@@ -45,6 +46,10 @@ class ZebraFont
         self::ZEBRA_G => [
             0 => [90, +60], // +60
             1 => [60, +40], // +40
+        ],
+        self::ZEBRA_T => [
+            0 => [10, +1], // +1
+            1 => [10, +1], // +1
         ],
     ];
 
