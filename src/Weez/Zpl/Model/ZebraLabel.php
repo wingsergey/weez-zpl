@@ -212,7 +212,11 @@ class ZebraLabel
         $zpl .= ZplUtils::zplCommandSautLigne("LH", [0, 0]); // Rotation : reset
         $zpl .= ZplUtils::zplCommandSautLigne("FW", ['N', 0]); // Rotation : reset
         $zpl .= ZplUtils::zplCommandSautLigne("PO", ['N']); //Print orientation : normal
+
+        $zpl .= ZplUtils::zplCommandSautLigne("CI28"); //Change international encoding to use utf-8
+
         $zpl .= ZplUtils::zplCommandSautLigne("CF", [0]); //Start Label
+
         $zpl .= $this->zebraPrintMode->getZplCode();
 
         if ($this->widthDots !== null) {
