@@ -44,6 +44,11 @@ class ZebraImage extends ZebraElement
         $this->positionY = $positionY;
     }
 
+    public function getResource() : Image
+    {
+        return $this->resource;
+    }
+
     /**
      *
      *  {@inheritdoc}
