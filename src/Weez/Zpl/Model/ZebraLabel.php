@@ -48,8 +48,8 @@ class ZebraLabel
 
     /**
      *
-     * @param float|null $heightDots height explain in dots
      * @param float|null $widthDots width explain in dots
+     * @param float|null $heightDots height explain in dots
      * @param PrinterOptions|null $printerOptions
      */
     public function __construct($widthDots = null, $heightDots = null, $printerOptions = null)
@@ -226,16 +226,33 @@ class ZebraLabel
 
         if ($this->heightDots !== null) {
             $zpl .= ZplUtils::zplCommandSautLigne("LL", [$this->heightDots]);
+        } else {
+            $zpl .= ZplUtils::zplCommandSautLigne("LL", [$this->getLabelLength()]);
         }
 
         //Default Font and Size
         if (($defaultZebraFont = $this->printerOptions->getDefaultZebraFont()) !== null && ($defaultZebraFontSize = $this->printerOptions->getDefaultFontSize()) !== null) {
             $zpl .= ZplUtils::zplCommandSautLigne("CF", ZplUtils::extractDotsFromFont($defaultZebraFont, $defaultZebraFontSize, $this->printerOptions->getZebraPPP()));
         }
+        $lastPositionY = 0;
         foreach ($this->zebraElements as $zebraElements) {
             $zpl .= $zebraElements->getZplCode($this->printerOptions);
+            $lastPositionY = $zebraElements->getPositionY();
         }
         $zpl .= ZplUtils::zplCommandSautLigne("XZ"); //End Label
         return $zpl;
+    }
+
+    public function getLabelLength() : ?int
+    {
+        $lastPositionY = 0;
+        foreach ($this->zebraElements as $zebraElements) {
+            $elementPositionY = $zebraElements->getPositionY();
+            if ($elementPositionY > $lastPositionY) {
+                $lastPositionY = $elementPositionY;
+            }
+        }
+
+        return $lastPositionY;
     }
 }
