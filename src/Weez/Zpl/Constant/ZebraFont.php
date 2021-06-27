@@ -49,13 +49,13 @@ class ZebraFont
         ],
         self::ZEBRA_T => [
             0 => [10, +1], // +1
-            1 => [10, +1], // +1
+            1 => [9, +1], // +1
         ],
     ];
 
     const FONT_SIZE_MM_PER_POINT = 0.353;
 
-    public static function getFontProportions($font)
+    public static function getFontProportion($font)
     {
         $heightShift = ZebraFont::FONT_SHIFTS[$font][0][0];
         $widthShift = ZebraFont::FONT_SHIFTS[$font][1][0];

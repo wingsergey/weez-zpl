@@ -106,7 +106,7 @@ class ZplUtils
         $dpi  = $zebraPPP->getDotByMm();
 
         $fontHeight = $fontSize * ZebraFont::FONT_SIZE_MM_PER_POINT * $dpi;
-        $proportion = ZebraFont::getFontProportions($font);
+        $proportion = ZebraFont::getFontProportion($font);
 
         $tab[0] = round($fontHeight); // Heigth
         $tab[1] = round($tab[0] * $proportion); // Width
